@@ -31,6 +31,7 @@
     <modules>
         <module>lazy-pay</module>
         <module>skywalking-examples</module>
+        <module>lazy_agent</module>
     </modules>
 
     <dependencyManagement>
