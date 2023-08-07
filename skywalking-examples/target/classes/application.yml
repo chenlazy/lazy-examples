@@ -1,7 +1,0 @@
-server:
-  port: 9057
-  contextPath: /sky
-
-spring:
-  application:
-    name: skywalking_demo

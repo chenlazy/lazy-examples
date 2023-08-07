@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="skywalking-examples" />
         <module name="pay" />
+        <module name="flink-examples" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
