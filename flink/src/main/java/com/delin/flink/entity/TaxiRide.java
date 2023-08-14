@@ -50,7 +50,7 @@ public class TaxiRide implements Comparable<TaxiRide>, Serializable {
             float startLat,
             float endLon,
             float endLat,
-            short passengerCnt,
+            long passengerCnt,
             long taxiId,
             long driverId) {
         this.rideId = rideId;
@@ -72,7 +72,7 @@ public class TaxiRide implements Comparable<TaxiRide>, Serializable {
     public float startLat;
     public float endLon;
     public float endLat;
-    public short passengerCnt;
+    public long passengerCnt;
     public long taxiId;
     public long driverId;
 
@@ -190,5 +190,85 @@ public class TaxiRide implements Comparable<TaxiRide>, Serializable {
     @VisibleForTesting
     public StreamRecord<Long> idAsStreamRecord() {
         return new StreamRecord<>(this.rideId, this.getEventTimeMillis());
+    }
+
+    public long getRideId() {
+        return rideId;
+    }
+
+    public void setRideId(long rideId) {
+        this.rideId = rideId;
+    }
+
+    public boolean isStart() {
+        return isStart;
+    }
+
+    public void setStart(boolean start) {
+        isStart = start;
+    }
+
+    public Instant getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(Instant eventTime) {
+        this.eventTime = eventTime;
+    }
+
+    public float getStartLon() {
+        return startLon;
+    }
+
+    public void setStartLon(float startLon) {
+        this.startLon = startLon;
+    }
+
+    public float getStartLat() {
+        return startLat;
+    }
+
+    public void setStartLat(float startLat) {
+        this.startLat = startLat;
+    }
+
+    public float getEndLon() {
+        return endLon;
+    }
+
+    public void setEndLon(float endLon) {
+        this.endLon = endLon;
+    }
+
+    public float getEndLat() {
+        return endLat;
+    }
+
+    public void setEndLat(float endLat) {
+        this.endLat = endLat;
+    }
+
+    public long getPassengerCnt() {
+        return passengerCnt;
+    }
+
+    public void setPassengerCnt(long passengerCnt) {
+        this.passengerCnt = passengerCnt;
+    }
+
+    public long getTaxiId() {
+        return taxiId;
+    }
+
+    public void setTaxiId(long taxiId) {
+        this.taxiId = taxiId;
+    }
+
+    public long getDriverId() {
+        return driverId;
+    }
+
+    public void setDriverId(long driverId) {
+        this.driverId = driverId;
     }
 }

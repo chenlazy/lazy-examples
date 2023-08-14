@@ -120,4 +120,68 @@ public class TaxiFare implements Serializable {
     public StreamRecord<TaxiFare> asStreamRecord() {
         return new StreamRecord<>(this, this.getEventTimeMillis());
     }
+
+    public long getRideId() {
+        return rideId;
+    }
+
+    public void setRideId(long rideId) {
+        this.rideId = rideId;
+    }
+
+    public long getTaxiId() {
+        return taxiId;
+    }
+
+    public void setTaxiId(long taxiId) {
+        this.taxiId = taxiId;
+    }
+
+    public long getDriverId() {
+        return driverId;
+    }
+
+    public void setDriverId(long driverId) {
+        this.driverId = driverId;
+    }
+
+    public Instant getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Instant startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public float getTip() {
+        return tip;
+    }
+
+    public void setTip(float tip) {
+        this.tip = tip;
+    }
+
+    public float getTolls() {
+        return tolls;
+    }
+
+    public void setTolls(float tolls) {
+        this.tolls = tolls;
+    }
+
+    public float getTotalFare() {
+        return totalFare;
+    }
+
+    public void setTotalFare(float totalFare) {
+        this.totalFare = totalFare;
+    }
 }
