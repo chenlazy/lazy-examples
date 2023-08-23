@@ -40,7 +40,7 @@ public class HourlyTipsExercise {
     public void execute() throws Exception {
         final StreamExecutionEnvironment environment = StreamExecutionEnvironment.getExecutionEnvironment();
 
-        SingleOutputStreamOperator<TaxiFare> fareSingleOutputStreamOperator = environment.addSource(taxiFareSource).assignTimestampsAndWatermarks(WatermarkStrategy.<TaxiFare>forMonotonousTimestamps()
+                        SingleOutputStreamOperator<TaxiFare> fareSingleOutputStreamOperator = environment.addSource(taxiFareSource).assignTimestampsAndWatermarks(WatermarkStrategy.<TaxiFare>forMonotonousTimestamps()
                 .withTimestampAssigner((event, time) -> event.getEventTimeMillis()));
 
 
@@ -59,7 +59,7 @@ public class HourlyTipsExercise {
      * 处理，每一次有事件被分配到窗口时，都会调用 ReduceFunction 或者 AggregateFunction 来增量计算
      * 通过 ReduceFunction 或者 AggregateFunction 预聚合的增量计算结果在触发窗口时， 提供给 ProcessWindowFunction 做全量计算。
      */
-    class MyWastefulMax extends ProcessWindowFunction<TaxiFare, Tuple3<Long, Long, Float>, Long, TimeWindow> {
+    static class MyWastefulMax extends ProcessWindowFunction<TaxiFare, Tuple3<Long, Long, Float>, Long, TimeWindow> {
 
         @Override
         public void process(Long key, ProcessWindowFunction<TaxiFare, Tuple3<Long, Long, Float>, Long, TimeWindow>.Context context, Iterable<TaxiFare> elements, Collector<Tuple3<Long, Long, Float>> out) throws Exception {
@@ -68,6 +68,14 @@ public class HourlyTipsExercise {
                 a += element.getTip();
             }
             out.collect(Tuple3.of(key, context.window().getEnd(), a));
+        }
+    }
+
+    static class MyWindowAggFunction extends ProcessWindowFunction<TaxiFare, Tuple3<Long, Long, Float>, Long, TimeWindow> {
+
+        @Override
+        public void process(Long aLong, ProcessWindowFunction<TaxiFare, Tuple3<Long, Long, Float>, Long, TimeWindow>.Context context, Iterable<TaxiFare> elements, Collector<Tuple3<Long, Long, Float>> out) throws Exception {
+
         }
     }
 
