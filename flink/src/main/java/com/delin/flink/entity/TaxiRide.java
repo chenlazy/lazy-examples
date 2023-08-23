@@ -65,15 +65,54 @@ public class TaxiRide implements Comparable<TaxiRide>, Serializable {
         this.driverId = driverId;
     }
 
+    /**
+     * 每次车程的唯一id
+     */
     public long rideId;
+
+    /**
+     * 行程开始事件为 TRUE， 行程结束事件为 FALSE
+     */
     public boolean isStart;
+
+    /**
+     * 事件的时间戳
+     */
     public Instant eventTime;
+
+    /**
+     * 车程开始位置的经度
+     */
     public float startLon;
+
+    /**
+     * 车程开始位置的维度
+     */
     public float startLat;
+
+    /**
+     * 车程结束位置的经度
+     */
     public float endLon;
+
+    /**
+     * 车程结束位置的维度
+     */
     public float endLat;
+
+    /**
+     * 乘车人数
+     */
     public long passengerCnt;
+
+    /**
+     * 每一辆出租车的唯一id
+     */
     public long taxiId;
+
+    /**
+     * 每一位司机的唯一id
+     */
     public long driverId;
 
     @Override

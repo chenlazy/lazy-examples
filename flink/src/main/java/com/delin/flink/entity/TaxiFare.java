@@ -36,33 +36,44 @@ public class TaxiFare implements Serializable {
         this.totalFare = g.totalFare();
     }
 
-    /** Creates a TaxiFare with the given parameters. */
-    public TaxiFare(
-            long rideId,
-            long taxiId,
-            long driverId,
-            Instant startTime,
-            String paymentType,
-            float tip,
-            float tolls,
-            float totalFare) {
-        this.rideId = rideId;
-        this.taxiId = taxiId;
-        this.driverId = driverId;
-        this.startTime = startTime;
-        this.paymentType = paymentType;
-        this.tip = tip;
-        this.tolls = tolls;
-        this.totalFare = totalFare;
-    }
-
+    /**
+     * 每次车程的唯一id
+     */
     public long rideId;
+
+    /**
+     * 每一辆出租车的唯一id
+     */
     public long taxiId;
+
+    /**
+     * 每一位司机的唯一id
+     */
     public long driverId;
+
+    /**
+     * 车程开始时间
+     */
     public Instant startTime;
+
+    /**
+     * 现金(CASH)或刷卡(CARD)
+     */
     public String paymentType;
+
+    /**
+     * 小费
+     */
     public float tip;
+
+    /**
+     * 过路费
+     */
     public float tolls;
+
+    /**
+     * 总计车费
+     */
     public float totalFare;
 
     @Override
