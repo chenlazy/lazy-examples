@@ -10,7 +10,6 @@ import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.IOException;
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
 import java.security.ProtectionDomain;

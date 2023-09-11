@@ -10,9 +10,12 @@
         <module name="pay" />
         <module name="agent" />
         <module name="flink-examples" />
+        <module name="thread-examples" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="actor" target="11" />
+      <module name="akka-example" target="1.8" />
       <module name="skywalking" target="1.8" />
     </bytecodeTargetLevel>
   </component>
