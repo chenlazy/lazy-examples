@@ -24,14 +24,14 @@
         <apache.commons.lang3.version>3.12.0</apache.commons.lang3.version>
 
         <guava.version>31.1-jre</guava.version>
-
-        <skywalking.version>8.15.0</skywalking.version>
     </properties>
 
     <modules>
         <module>lazy-pay</module>
         <module>skywalking-examples</module>
+        <module>flink</module>
         <module>lazy_agent</module>
+        <module>thread</module>
     </modules>
 
     <dependencyManagement>
@@ -63,24 +63,6 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.skywalking</groupId>
-            <artifactId>apm-toolkit-trace</artifactId>
-            <version>${skywalking.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.skywalking</groupId>
-            <artifactId>apm-toolkit-log4j-2.x</artifactId>
-            <version>${skywalking.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-core</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>

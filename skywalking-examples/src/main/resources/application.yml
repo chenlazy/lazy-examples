@@ -1,6 +1,7 @@
 server:
   port: 9057
-  contextPath: /sky
+  servlet:
+    context-path: /sky
 
 spring:
   application:
