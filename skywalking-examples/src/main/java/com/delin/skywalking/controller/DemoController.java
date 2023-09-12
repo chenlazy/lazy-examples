@@ -38,7 +38,7 @@ public class DemoController {
 
     @GetMapping("/mdc")
     public void testMdc() {
-        System.out.println("====MDC demo====");
+        log.info("====MDC demo====");
         Executors.newSingleThreadExecutor().execute(() -> {
             MDC.put("MDC", "MDC-A");
             log.info("test mdc save threadId:{}", Thread.currentThread().getId());
@@ -52,12 +52,17 @@ public class DemoController {
     @GetMapping("testAsyncTraceIdDropPrint")
     public void testAsyncTraceIdDropPrint() {
         demoService.traceDemo();
-        Executors.newSingleThreadExecutor().execute(helloService::asyncHelloTrace);
+        helloService.asyncHelloTrace();
     }
 
     @GetMapping("testAsyncTraceIdPrint")
     public void testAsyncTraceIdPrint() {
         demoService.traceDemo();
         Executors.newSingleThreadExecutor().execute(new RunnableWrapper(helloService::asyncHelloTrace));
+    }
+
+    @GetMapping("traceIdDropRepetition")
+    public void traceIdDropRepetition() {
+        helloService.traceIdDropRepetition();
     }
 }

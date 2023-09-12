@@ -1,5 +1,6 @@
 package com.delin.skywalking.service;
 
+import org.apache.skywalking.apm.toolkit.trace.Trace;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @description: com.delin.skywalking.service.impl.DemoService
  */
 @SpringBootTest
-public class DemoServiceTest {
+class DemoServiceTest {
 
     @Autowired
     private DemoService demoService;
@@ -22,7 +23,7 @@ public class DemoServiceTest {
     private HelloService helloService;
 
     @Test
-    public void testTraceId() {
+    void testTraceId() {
         demoService.traceDemo();
         helloService.helloTrace();
     }

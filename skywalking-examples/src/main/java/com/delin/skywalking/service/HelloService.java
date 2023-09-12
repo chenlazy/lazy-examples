@@ -12,4 +12,6 @@ public interface HelloService {
     void helloTrace();
 
     void asyncHelloTrace();
+
+    void traceIdDropRepetition();
 }
