@@ -10,4 +10,6 @@ package com.delin.skywalking.service;
 public interface HelloService {
 
     void helloTrace();
+
+    void asyncHelloTrace();
 }

@@ -4,11 +4,13 @@ import com.delin.skywalking.service.DemoService;
 import com.delin.skywalking.service.HelloService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
+import lombok.RequiredArgsConstructor;
+import org.apache.skywalking.apm.toolkit.trace.RunnableWrapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
 
 /**
  * DemoController
@@ -18,6 +20,7 @@ import java.util.concurrent.Executors;
  * @description: com.delin.skywalking.controller.DemoController
  */
 @Slf4j
+@RequiredArgsConstructor
 @RestController
 public class DemoController {
 
@@ -26,10 +29,6 @@ public class DemoController {
     private final HelloService helloService;
 
 
-    public DemoController(DemoService demoService, HelloService helloService) {
-        this.demoService = demoService;
-        this.helloService = helloService;
-    }
 
     @GetMapping("traceIdPrint")
     public void testTraceIdPrint() {
@@ -48,5 +47,17 @@ public class DemoController {
             MDC.put("MDC", "MDC-B");
             log.info("test mdc save data threadId:{}", Thread.currentThread().getId());
         });
+    }
+
+    @GetMapping("testAsyncTraceIdDropPrint")
+    public void testAsyncTraceIdDropPrint() {
+        demoService.traceDemo();
+        Executors.newSingleThreadExecutor().execute(helloService::asyncHelloTrace);
+    }
+
+    @GetMapping("testAsyncTraceIdPrint")
+    public void testAsyncTraceIdPrint() {
+        demoService.traceDemo();
+        Executors.newSingleThreadExecutor().execute(new RunnableWrapper(helloService::asyncHelloTrace));
     }
 }

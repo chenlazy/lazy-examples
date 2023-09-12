@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -10,6 +11,7 @@
         <module name="pay" />
         <module name="agent" />
         <module name="flink-examples" />
+        <module name="thread" />
         <module name="thread-examples" />
       </profile>
     </annotationProcessing>
@@ -17,6 +19,7 @@
       <module name="actor" target="11" />
       <module name="akka-example" target="1.8" />
       <module name="skywalking" target="1.8" />
+      <module name="thread" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

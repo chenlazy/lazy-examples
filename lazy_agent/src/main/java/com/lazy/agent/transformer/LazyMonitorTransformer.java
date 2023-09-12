@@ -8,7 +8,6 @@ import javassist.CtBehavior;
 import javassist.CtClass;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
-import lombok.extern.slf4j.Slf4j;
 
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
@@ -20,7 +19,6 @@ import java.util.Set;
  * @version: 1.0-SN
  * @date: 2023/6/18 16:14 星期日
  */
-@Slf4j
 public class LazyMonitorTransformer implements ClassFileTransformer {
 
     private static Set<String> classNameSet = Sets.newHashSet();
