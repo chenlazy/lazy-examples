@@ -4,7 +4,9 @@ import com.delin.skywalking.service.DemoService;
 import com.delin.skywalking.service.HelloService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.skywalking.apm.toolkit.trace.RunnableWrapper;
 import org.apache.skywalking.apm.toolkit.trace.TraceContext;
+import org.apache.skywalking.apm.toolkit.trace.TraceCrossThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
@@ -39,11 +41,11 @@ public class HelloServiceImpl implements HelloService {
     public void asyncHelloTrace() {
         log.info("invoke method trace id normal print threadId:{} threadName:{}", Thread.currentThread().getId(), Thread.currentThread().getName());
         System.out.println("======asyncHelloTrace======");
-        Executors.newSingleThreadExecutor().execute(() -> {
+        Executors.newSingleThreadExecutor().execute(new RunnableWrapper(() -> {
             long threadId = Thread.currentThread().getId();
             String threadName = Thread.currentThread().getName();
             log.info("invoke HelloService asyncHelloTrace method threadId:{} threadName:{}", threadId, threadName);
-        });
+        }));
     }
 
     @Override
